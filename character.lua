@@ -38,21 +38,21 @@ end
 
 function canCollide(prop)
     -- general collision callback to prevent clipping
-    
-    if player.vel.y ~= 0 then 
-        if is_above(prevPlayer, prop) then 
+
+    if player.vel.y ~= 0 then
+        if is_above(prevPlayer, prop) then
             player.pos.y = prevPlayer.pos.y
-            player.vel.y = 0 
+            player.vel.y = 0
             player.midair = false
             print("colliding from above")
         elseif is_below(prevPlayer, prop) then
             player.pos.y = prevPlayer.pos.y
-            player.vel.y = 0 
+            player.vel.y = 0
             player.midair = true
             print("colliding from below")
         else
             player.pos.x = prevPlayer.pos.x
-            player.vel.x = 0 
+            player.vel.x = 0
             player.midair = true
         end
     end
@@ -107,12 +107,12 @@ function update_positions(dt)
         end
     end
 
-    player.pos = player.pos + player.vel
+    player.pos = player.pos + player.vel * 50 * dt
 end
 
 function update_player(dt)
     update_positions(dt)
-    
+
     -- collision checking
     handle_collisions(dt)
 
