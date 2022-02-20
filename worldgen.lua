@@ -50,6 +50,13 @@ levels = {
             width = 50,
             color = {1, 1, 1}, -- r,g,b
         },
+        block12 = {
+            type = "platform",
+            pos = vector.new(150,200),
+            height = 10,
+            width = 50,
+            color = {1, 1, 1}, -- r,g,b
+        },
         block2 = {
             type = "platform",
             pos = vector.new(300,300),

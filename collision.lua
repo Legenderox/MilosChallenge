@@ -11,6 +11,6 @@ function is_above(player, prop)
 end
 
 function is_below(player, prop)
-    if player.pos.y + player.height >= prop.pos.y + prop.height then return true end
+    if player.pos.y >= prop.pos.y + prop.height then return true end
     return false
 end

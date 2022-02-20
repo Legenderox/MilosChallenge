@@ -21,17 +21,16 @@ local collisionCallbacks = {
         canCollide(prop)
         love.timer.sleep(.5)
         nextLevel()
-
+        goToStart()
     end,
     killblock = function()
-        
+        goToStart()
     end,
     platform = function(prop)
         canCollide(prop)
     end,
 }
 
-<<<<<<< HEAD
 function goToStart( ... )
     local level = levels[current_level]
 
@@ -51,16 +50,11 @@ function canCollide(prop)
             player.vel.y = 0 
             player.midair = true
             print("colliding from below")
+        else
+            player.pos.x = prevPlayer.pos.x
+            player.vel.x = 0 
+            player.midair = true
         end
-=======
-function canCollide( ... )
-    -- general collision callback to prevent clipping
-    
-    if player.vel.y ~= 0 then 
-        player.pos.y = prevPlayer.pos.y
-        player.vel.y = 0 
-        player.midair = false
->>>>>>> parent of efdbb99 (add death)
     end
 end
 
