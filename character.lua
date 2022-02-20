@@ -28,10 +28,10 @@ function update_positions(dt)
             player.vel.x = 0
         end
         -- since we're on the ground we can move
-        if love.keyboard.isDown("right") then
+        if love.keyboard.isDown("d") then
             player.vel.x = player.vel.x + 50 * dt
             player.vel.x = math.min(player.vel.x, 5)
-        elseif love.keyboard.isDown("left") then
+        elseif love.keyboard.isDown("a") then
             player.vel.x = player.vel.x - 50 * dt
             player.vel.x = math.max(player.vel.x, -5)
         end
@@ -42,8 +42,7 @@ function update_positions(dt)
         end
     end
 
-    player.pos.y = player.pos.y + player.vel.y
-    player.pos.x = player.pos.x + player.vel.x
+    player.pos = player.pos + player.vel
 end
 
 function update_player(dt)
