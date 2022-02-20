@@ -1,3 +1,5 @@
+require("character")
+
 function love.load()
 
 end
@@ -7,5 +9,6 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.draw(player.sprite, player.x, player.y)
+    love.graphics.print(player.pos.y, 0, 0)
+    love.graphics.draw(player.sprite, player.pos.x, player.pos.y)
 end
