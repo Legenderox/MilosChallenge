@@ -9,8 +9,7 @@ player = {
     width = 32,
     height = 64,
     midair = true,
-    sprite = love.graphics.newImage("player.png"),
-    dead = false
+    sprite = love.graphics.newImage("player.png")
 }
 local prevPlayer
 
@@ -25,13 +24,14 @@ local collisionCallbacks = {
 
     end,
     killblock = function()
-        player.dead = true
+        
     end,
     platform = function(prop)
         canCollide(prop)
     end,
 }
 
+<<<<<<< HEAD
 function goToStart( ... )
     local level = levels[current_level]
 
@@ -52,6 +52,15 @@ function canCollide(prop)
             player.midair = true
             print("colliding from below")
         end
+=======
+function canCollide( ... )
+    -- general collision callback to prevent clipping
+    
+    if player.vel.y ~= 0 then 
+        player.pos.y = prevPlayer.pos.y
+        player.vel.y = 0 
+        player.midair = false
+>>>>>>> parent of efdbb99 (add death)
     end
 end
 
@@ -109,7 +118,7 @@ end
 
 function update_player(dt)
     update_positions(dt)
-
+    
     -- collision checking
     handle_collisions(dt)
 
