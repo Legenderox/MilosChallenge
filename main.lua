@@ -10,8 +10,13 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.print(player.pos.y, 0, 0)
-    love.graphics.setColor(1,1,1)
-    love.graphics.draw(player.sprite, player.pos.x, player.pos.y)
-    drawLevel(1)
+    if player.dead then
+        love.graphics.setColor(1,0,0)
+        love.graphics.print("you died lmao!", WIDTH/2, HEIGHT/2)
+    else
+        love.graphics.print(player.pos.y, 0, 0)
+        love.graphics.setColor(1,1,1)
+        love.graphics.draw(player.sprite, player.pos.x, player.pos.y)
+        drawLevel(1)
+    end
 end

@@ -9,7 +9,8 @@ player = {
     width = 32,
     height = 64,
     midair = true,
-    sprite = love.graphics.newImage("player.png")
+    sprite = love.graphics.newImage("player.png"),
+    dead = false
 }
 local prevPlayer
 
@@ -23,7 +24,7 @@ local collisionCallbacks = {
 
     end,
     killblock = function()
-        
+        player.dead = true
     end,
     platform = function()
         canCollide()
@@ -32,10 +33,10 @@ local collisionCallbacks = {
 
 function canCollide( ... )
     -- general collision callback to prevent clipping
-    
-    if player.vel.y ~= 0 then 
+
+    if player.vel.y ~= 0 then
         player.pos.y = prevPlayer.pos.y
-        player.vel.y = 0 
+        player.vel.y = 0
         player.midair = false
     end
 end
@@ -94,7 +95,7 @@ end
 
 function update_player(dt)
     update_positions(dt)
-    
+
     -- collision checking
     handle_collisions(dt)
 
