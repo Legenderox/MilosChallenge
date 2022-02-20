@@ -1,5 +1,4 @@
 local vector = require("vector")
-local character = require("character")
 
 current_level = 1
 
@@ -32,7 +31,7 @@ levels = {
         },
         goal = {
             type = "goal",
-            pos = vector.new(550,300),
+            pos = vector.new(590,300),
             height = 10,
             width = 50,
             color = {1, 0.952, 0.101}, -- r,g,b
@@ -43,6 +42,27 @@ levels = {
             height = 20,
             width = 640,
             color = {1,0,0}, -- r,g,b
+        },
+        block1 = {
+            type = "platform",
+            pos = vector.new(150,300),
+            height = 10,
+            width = 50,
+            color = {1, 1, 1}, -- r,g,b
+        },
+        block2 = {
+            type = "platform",
+            pos = vector.new(300,300),
+            height = 10,
+            width = 50,
+            color = {1, 1, 1}, -- r,g,b
+        },
+        block3 = {
+            type = "platform",
+            pos = vector.new(450,300),
+            height = 10,
+            width = 50,
+            color = {1, 1, 1}, -- r,g,b
         },
     },
     [2] = {
