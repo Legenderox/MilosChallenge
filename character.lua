@@ -3,13 +3,13 @@ vector = require("vector")
 player = {
     pos = vector.new(0, 0),
     vel = vector.new(0, 0),
-    width = 64,
-    height = 128,
+    width = 32,
+    height = 64,
     midair = true,
     sprite = love.graphics.newImage("player.png")
 }
 
-function update_player(dt)
+function update_positions(dt)
     if player.pos.y >= HEIGHT - player.height then
         player.midair = false
         player.vel.y = 0
@@ -44,4 +44,9 @@ function update_player(dt)
 
     player.pos.y = player.pos.y + player.vel.y
     player.pos.x = player.pos.x + player.vel.x
+end
+
+function update_player(dt)
+    update_positions(dt)
+    -- collision checking
 end
