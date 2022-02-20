@@ -94,5 +94,4 @@ end
 
 function nextLevel()
     current_level = current_level + 1
-    drawLevel(current_level)
 end

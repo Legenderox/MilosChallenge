@@ -4,3 +4,13 @@ function collide_check(player, prop)
         player.pos.y < prop.pos.y + prop.height and
         player.pos.y + player.height > prop.pos.y
 end
+
+function is_above(player, prop)
+    if player.pos.y + player.height <= prop.pos.y then return true end
+    return false
+end
+
+function is_below(player, prop)
+    if player.pos.y + player.height >= prop.pos.y + prop.height then return true end
+    return false
+end

@@ -15,29 +15,43 @@ player = {
 local prevPlayer
 
 local collisionCallbacks = {
-    start = function()
-        canCollide()
+    start = function(prop)
+        canCollide(prop)
     end,
-    goal = function()
-        canCollide()
+    goal = function(prop)
+        canCollide(prop)
         love.timer.sleep(.5)
+        nextLevel()
 
     end,
     killblock = function()
         player.dead = true
     end,
-    platform = function()
-        canCollide()
+    platform = function(prop)
+        canCollide(prop)
     end,
 }
 
-function canCollide( ... )
-    -- general collision callback to prevent clipping
+function goToStart( ... )
+    local level = levels[current_level]
 
-    if player.vel.y ~= 0 then
-        player.pos.y = prevPlayer.pos.y
-        player.vel.y = 0
-        player.midair = false
+end
+
+function canCollide(prop)
+    -- general collision callback to prevent clipping
+    
+    if player.vel.y ~= 0 then 
+        if is_above(prevPlayer, prop) then 
+            player.pos.y = prevPlayer.pos.y
+            player.vel.y = 0 
+            player.midair = false
+            print("colliding from above")
+        elseif is_below(prevPlayer, prop) then
+            player.pos.y = prevPlayer.pos.y
+            player.vel.y = 0 
+            player.midair = true
+            print("colliding from below")
+        end
     end
 end
 
@@ -45,12 +59,12 @@ function handle_collisions()
     local level = levels[current_level]
     local collided = false
 
-    for name, settings in pairs(level) do
-        if collide_check(player, settings) then
+    for name, prop in pairs(level) do
+        if collide_check(player, prop) then
             collided = true
-            local callback = collisionCallbacks[settings.type]
-            if not callback then print("Cannot find collision callback for type: ".. settings.type) end
-            callback()
+            local callback = collisionCallbacks[prop.type]
+            if not callback then print("Cannot find collision callback for type: ".. prop.type) end
+            callback(prop)
         end
     end
 
