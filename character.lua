@@ -88,7 +88,7 @@ function update_positions(dt)
         player.vel.y = math.min(player.vel.y, 10)
     -- friction
     elseif not player.midair then
-        player.vel.x = player.vel.x * 0.8
+        player.vel.x = player.vel.x * 50 * dt
         if math.abs(player.vel.x) < 0.001 then
             player.vel.x = 0
         end
