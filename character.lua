@@ -33,7 +33,9 @@ local collisionCallbacks = {
 
 function goToStart( ... )
     local level = levels[current_level]
-
+    local start = level.start
+    if not start then print("level: ".. tostring(current_level).. " does not have start!") return end
+    player.pos = start.pos - vector.new(0,player.height + 5)
 end
 
 function canCollide(prop)
@@ -44,12 +46,10 @@ function canCollide(prop)
             player.pos.y = prevPlayer.pos.y
             player.vel.y = 0
             player.midair = false
-            print("colliding from above")
         elseif is_below(prevPlayer, prop) then
             player.pos.y = prevPlayer.pos.y
             player.vel.y = 0
             player.midair = true
-            print("colliding from below")
         else
             player.pos.x = prevPlayer.pos.x
             player.vel.x = 0

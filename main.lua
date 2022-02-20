@@ -13,5 +13,5 @@ function love.draw()
     love.graphics.print(player.pos.y, 0, 0)
     love.graphics.setColor(1,1,1)
     love.graphics.draw(player.sprite, player.pos.x, player.pos.y)
-    drawLevel(1)
+    drawLevel(current_level)
 end
