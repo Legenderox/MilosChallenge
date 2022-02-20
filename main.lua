@@ -2,7 +2,7 @@ character = require("character")
 worldgen = require("worldgen")
 
 function love.load()
-
+    goToStart()
 end
 
 function love.update(dt)

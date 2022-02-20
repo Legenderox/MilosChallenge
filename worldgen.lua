@@ -4,7 +4,7 @@ current_level = 1
 
 props = {
     template = {
-        
+
     },
     start = {
 
@@ -66,6 +66,72 @@ levels = {
         },
     },
     [2] = {
+        start = {
+            type = "start",
+            pos = vector.new(0,500),
+            height = 10,
+            width = 50,
+            color = {0,1,0}, -- r,g,b
+        },
+        goal = {
+            type = "goal",
+            pos = vector.new(0,200),
+            height = 10,
+            width = 50,
+            color = {1, 0.952, 0.101}, -- r,g,b
+        },
+        killFloor = {
+            type = "killblock",
+            pos = vector.new(0,620),
+            height = 20,
+            width = 640,
+            color = {1,0,0}, -- r,g,b
+        },
+        block1 = {
+            type = "platform",
+            pos = vector.new(100,450),
+            height = 10,
+            width = 50,
+            color = {1, 1, 1}, -- r,g,b
+        },
+        block2 = {
+            type = "platform",
+            pos = vector.new(250,400),
+            height = 10,
+            width = 50,
+            color = {1, 1, 1}, -- r,g,b
+        },
+        block3 = {
+            type = "platform",
+            pos = vector.new(400,400),
+            height = 10,
+            width = 200,
+            color = {1, 1, 1}, -- r,g,b
+        },
+        block4 = {
+            type = "platform",
+            pos = vector.new(400,300),
+            height = 10,
+            width = 150,
+            color = {1, 1, 1}, -- r,g,b
+        },
+        block5 = {
+            type = "platform",
+            pos = vector.new(250,250),
+            height = 10,
+            width = 50,
+            color = {1, 1, 1}, -- r,g,b
+        },
+        block6 = {
+            type = "platform",
+            pos = vector.new(100,200),
+            height = 10,
+            width = 50,
+            color = {1, 1, 1}, -- r,g,b
+        },
+    },
+
+    [3] = {
         start = {
             type = "start",
             pos = vector.new(50,50),
