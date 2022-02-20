@@ -3,15 +3,24 @@ collision = require("collision")
 worldgen = require("worldgen")
 tableUtil = require("tableUtil")
 
+defaultSprite = love.graphics.newImage("player.png")
+deadSprite = love.graphics.newImage("dead.png")
+
 player = {
     pos = vector.new(0, 0),
     vel = vector.new(0, 0),
+    orientation = 0,
     width = 32,
     height = 64,
     midair = true,
-    sprite = love.graphics.newImage("player.png")
+    dead = false,
+    sprite = defaultSprite
 }
 local prevPlayer
+
+mainTheme_source = love.audio.newSource("mainTheme1.mp3", "stream")
+death_source = love.audio.newSource("death.mp3", "stream")
+love.audio.play(mainTheme_source)
 
 local collisionCallbacks = {
     start = function(prop)
@@ -19,12 +28,17 @@ local collisionCallbacks = {
     end,
     goal = function(prop)
         canCollide(prop)
-        love.timer.sleep(.5)
+        player.midair = false
+        player.vel = vector.new(0,0)
         nextLevel()
         goToStart()
     end,
     killblock = function()
-        goToStart()
+        love.audio.play(death_source)
+        love.audio.pause(mainTheme_source)
+        player.midair = false
+        player.vel = vector.new(0,0)
+        player.dead = true
     end,
     platform = function(prop)
         canCollide(prop)
@@ -35,7 +49,7 @@ function goToStart( ... )
     local level = levels[current_level]
     local start = level.start
     if not start then print("level: ".. tostring(current_level).. " does not have start!") return end
-    player.pos = start.pos - vector.new(0,player.height + 5)
+    player.pos = start.pos - vector.new(0,player.height + 10)
 end
 
 function canCollide(prop)
