@@ -19,7 +19,7 @@ function update_positions(dt)
 
     -- gravity
     if player.midair then
-        player.vel.y = player.vel.y + 1
+        player.vel.y = player.vel.y + 100 * dt
         player.vel.y = math.min(player.vel.y, 10)
     -- friction
     elseif not player.midair then
