@@ -25,16 +25,23 @@ levels = {
     [1] = {
         start = {
             type = "start",
-            pos = vector.new(50,600),
+            pos = vector.new(0,300),
             height = 10,
             width = 50,
             color = {0,1,0}, -- r,g,b
         },
         goal = {
             type = "goal",
-            pos = vector.new(550,100),
+            pos = vector.new(550,300),
             height = 10,
             width = 50,
+            color = {1, 0.952, 0.101}, -- r,g,b
+        },
+        killFloor = {
+            type = "killblock",
+            pos = vector.new(0,620),
+            height = 20,
+            width = 640,
             color = {1,0,0}, -- r,g,b
         },
     },
@@ -63,4 +70,9 @@ function drawLevel(level)
     for name, settings in pairs(levelDetails) do
         drawProp(settings)
     end
+end
+
+function nextLevel()
+    current_level = current_level + 1
+    drawLevel(current_level)
 end
