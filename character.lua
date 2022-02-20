@@ -102,7 +102,7 @@ function update_positions(dt)
         end
 
         if love.keyboard.isDown("space") then
-            player.vel.y = -15
+            player.vel.y = -20
             player.midair = true
         end
     end
